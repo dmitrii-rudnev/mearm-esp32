@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <link rel="icon" href="data:,">
+  <style>
+    body    { text-align: center; font-family: "Trebuchet MS", Arial; margin-left:auto; margin-right:auto;}
+    .slider { height: 50px; width: 66%; }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
+</head>
+<body>
+  <h3>Позиция X: <span id="xPos"></span></h3>
+  <input type="range" min="-100" max="100" class="slider" id="xSlider" onchange="servo(xS.value,yS.value,zS.value,gS.value)"/>
+  <h3>Позиция Y: <span id="yPos"></span></h3>
+  <input type="range" min="60" max="200" value="130" class="slider" id="ySlider" onchange="servo(xS.value,yS.value,zS.value,gS.value)"/>
+  <h3>Позиция Z: <span id="zPos"></span></h3>
+  <input type="range" min="-60"  max="60" class="slider" id="zSlider" onchange="servo(xS.value,yS.value,zS.value,gS.value)"/>
+  <h3>Захват   : <span id="gPos"></span></h3>
+  <input type="range" min="0"  max="1" value="0" class="slider" id="gSlider" onchange="servo(xS.value,yS.value,zS.value,gS.value)"/>
+           
+  <script>
+    var xS = document.getElementById("xSlider");
+    var xP = document.getElementById("xPos"); xP.innerHTML = xS.value;
+            
+    var yS = document.getElementById("ySlider");            
+    var yP = document.getElementById("yPos"); yP.innerHTML = yS.value;
+            
+    var zS = document.getElementById("zSlider");
+    var zP = document.getElementById("zPos"); zP.innerHTML = zS.value;            
+   
+    var gS = document.getElementById("gSlider");
+    var gP = document.getElementById("gPos"); gP.innerHTML = gS.value;
+            
+    xS.oninput = function() { xP.innerHTML = xS.value; }
+    yS.oninput = function() { yP.innerHTML = yS.value; }
+    zS.oninput = function() { zP.innerHTML = zS.value; }
+    gS.oninput = function() { gP.innerHTML = gS.value; }
+            
+    $.ajaxSetup({timeout:1000}); 
+    function servo(pos_x,pos_y,pos_z,pos_g) {
+      $.get("/?value=" + pos_x + "X" + pos_y + "Y" + pos_z + "Z" + pos_g + "L&");
+    {Connection: close};}
+  </script>
+
+</body>
+</html>    
