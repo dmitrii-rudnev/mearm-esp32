@@ -1,4 +1,4 @@
-meArm web interface with ESP32 microcontroller
+meArm web interface with ESP32 MCU
 
 Коллеги! В этом репозитории находится исходный код решения, описанного в публикации "Управление манипулятором meArm через web-интерфейс"
 
